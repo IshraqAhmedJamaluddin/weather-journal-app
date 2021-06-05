@@ -4,13 +4,13 @@ const key = '99a1f40074046bff230a9390fda562f2'
 const to_do = 'weather'
 
 const getWeather = async (zip) => {
-    let url = `${base_url}${to_do}?zip=${zip},us&appid=${key}`
+    let url = `${base_url}${to_do}?zip=${zip},us&appid=${key}&units=imperial`
     fetch(url)
     .then((resp) => resp.json())
     .then((data) => {
         // Create a new date instance dynamically with JS
         let d = new Date();
-        let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+        let newDate = d.getMonth()+1 +'.'+ d.getDate()+'.'+ d.getFullYear();
         let info = {}
         info['temperature'] = data['main']['temp']
         info['date'] = newDate
